@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AnnouceRepository;
+use App\Repository\AnnounceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AnnouceRepository::class)]
-class Annouce
+#[ORM\Entity(repositoryClass: AnnounceRepository::class)]
+class Announce
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

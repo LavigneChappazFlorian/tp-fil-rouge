@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Annouce;
+use App\Entity\Announce;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Annouce>
+ * @extends ServiceEntityRepository<Announce>
  */
-class AnnouceRepository extends ServiceEntityRepository
+class AnnounceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Annouce::class);
+        parent::__construct($registry, Announce::class);
     }
 
     //    /**
-    //     * @return Annouce[] Returns an array of Annouce objects
+    //     * @return Announce[] Returns an array of Announce objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class AnnouceRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Annouce
+    //    public function findOneBySomeField($value): ?Announce
     //    {
     //        return $this->createQueryBuilder('a')
     //            ->andWhere('a.exampleField = :val')
