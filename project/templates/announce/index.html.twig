@@ -16,5 +16,15 @@
         <li>Your controller at <code>/var/www/src/Controller/AnnounceController.php</code></li>
         <li>Your template at <code>/var/www/templates/announce/index.html.twig</code></li>
     </ul>
+
+    <pre>
+        {{ dump(announces) }}
+    </pre>
+
+    <ul>
+        {% for announce in announces %}
+            <li>{{ announce.title }}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

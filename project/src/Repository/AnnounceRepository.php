@@ -15,7 +15,7 @@ class AnnounceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Announce::class);
     }
-
+    
     //    /**
     //     * @return Announce[] Returns an array of Announce objects
     //     */
