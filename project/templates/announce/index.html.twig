@@ -6,6 +6,8 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    a { text-decoration: none; color: #000000;}
+    a:hover {color:rgb(16, 129, 204);}
 </style>
 
 <div class="example-wrapper">
@@ -17,11 +19,11 @@
         <li>Your template at <code>/var/www/templates/announce/index.html.twig</code></li>
     </ul>
     
-    {# <ul>
+    <ul>
         {% for announce in announces %}
-        <li>{{ announce.title }}</li>
+        <li><a href="{{ path('announce_edit', {id: announce.id}) }}">{{ announce.title }}</a></li>
         {% endfor %}
-    </ul> #}
+    </ul>
 
 </div>
 {% endblock %}

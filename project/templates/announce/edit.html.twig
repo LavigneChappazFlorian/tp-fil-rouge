@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre annonce{% endblock %}
+
+{% block body %}
+    <h1>Résumé de l'annonce :</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.title, {'attr' : {'value' : one_announce.title}})}}
+        {{ form_row(form.description, {'attr' : {'value' : one_announce.description}}) }}
+        {{ form_row(form.author, {'attr' : {'value' : one_announce.author}}) }}
+        {{ form_widget(form.submit, { 'label': 'Modifier l\'annonce' }) }}
+    {{ form_end(form) }}
+{% endblock %}
