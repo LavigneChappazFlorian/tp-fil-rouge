@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
+use App\Form\CreateAnnounceType;
 use App\Repository\AnnounceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class AnnounceController extends AbstractController
@@ -17,6 +20,26 @@ final class AnnounceController extends AbstractController
         return $this->render('announce/index.html.twig', [
             'controller_name' => 'AnnounceController',
             'announces' => $announces,
+        ]);
+    }
+
+    #[Route('/announces/create', name: 'app_announce_create')]
+    public function new(Request $request, EntityManagerInterface $em): Response
+    {
+        $announce = new Announce();
+
+        $form = $this->createForm(CreateAnnounceType::class, $announce); // création d'un formulaire avec la récupération du formulaire "type"
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($announce); // prépare/mets en attente les données avant de les insérer ou update dans la bdd
+            $em->flush(); // éxécute réellement les requêtes SQL en attente
+
+            return $this->redirectToRoute('app_announce');
+        }
+
+        return $this->render('announce/create.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

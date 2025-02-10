@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\AnnounceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Form\AbstractType;
 
 #[ORM\Entity(repositoryClass: AnnounceRepository::class)]
-class Announce
+class Announce extends AbstractType
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
