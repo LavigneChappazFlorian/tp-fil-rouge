@@ -63,4 +63,25 @@ final class AnnounceController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/announces/{id}/delete', name: 'announce_delete', requirements: ['id' => '\d+'])]
+    public function delete(AnnounceRepository $announceRepository, Request $request, EntityManagerInterface $em, int $id): Response
+    {
+        $one_announce = $announceRepository->find($id);
+
+        $form = $this->createForm(CreateAnnounceType::class, $one_announce); // création d'un formulaire avec la récupération du formulaire "type"
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->remove($one_announce);
+            $em->flush(); // éxécute réellement les requêtes SQL en attente
+
+            return $this->redirectToRoute('announce');
+        }
+
+        return $this->render('announce/edit.html.twig', [
+            'one_announce' => $one_announce,
+            'form' => $form->createView(),
+        ]);
+    }
 }
