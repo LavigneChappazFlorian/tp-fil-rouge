@@ -14,24 +14,20 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
+    <div class="form-container">
+        <h2>Connexion</h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="emainputEmailil">Email :</label>
+                <input type="email" id="inputEmail" name="email" value="{{ last_username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Mot de passe :</label>
+                <input type="password" id="inputPassword" name="password" required>
+            </div>
+             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button type="submit" class="btn-submit">Se connecter</button>
+        </form>
+        <a href="{{ path('register') }}" class="link">Créer un compte</a>
     </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
 {% endblock %}

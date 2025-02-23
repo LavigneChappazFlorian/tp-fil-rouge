@@ -1,29 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnnounceController!{% endblock %}
+{% block title %}DealGames - Les annonces{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    a { text-decoration: none; color: #000000;}
-    a:hover {color:rgb(16, 129, 204);}
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block body %}    
+    <div class="container">
+        <div class="annonces">
+            {% for announce in announces %}
+            <div class="annonce">
+                <h2>{{ announce.title }}</h2>
+                <p>{{ announce.description }}</p>
+                <a href="{{ path('announce_edit', {id: announce.id}) }}" class="btn">Voir l'annonce</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/src/Controller/AnnounceController.php</code></li>
-        <li>Your template at <code>/var/www/templates/announce/index.html.twig</code></li>
-    </ul>
-    
-    <ul>
-        {% for announce in announces %}
-        <li><a href="{{ path('announce_edit', {id: announce.id}) }}">{{ announce.title }}</a></li>
-        {% endfor %}
-    </ul>
-
-</div>
 {% endblock %}
