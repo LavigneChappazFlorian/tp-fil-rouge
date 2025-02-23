@@ -24,9 +24,6 @@ class CreateAnnounceType extends AbstractType
             ])
             ->add('author', TextType::class, [
                 'label' => 'Autheur',
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Créer l’annonce',
             ]);
     }
 

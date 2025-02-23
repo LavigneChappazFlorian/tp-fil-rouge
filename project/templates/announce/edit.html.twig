@@ -3,11 +3,24 @@
 {% block title %}Modifier votre annonce{% endblock %}
 
 {% block body %}
-    <h1>Résumé de l'annonce :</h1>
-    {{ form_start(form) }}
-        {{ form_row(form.title, {'attr' : {'value' : one_announce.title}})}}
-        {{ form_row(form.description, {'attr' : {'value' : one_announce.description}}) }}
-        {{ form_row(form.author, {'attr' : {'value' : one_announce.author}}) }}
-        {{ form_widget(form.submit, { 'label': 'Modifier l\'annonce' }) }}
-    {{ form_end(form) }}
+    <div class="form-container">
+        <h2>Modifier votre annonce</h2>
+        <form action="{{ path('announce_edit', {id: one_announce.id}) }}" method="POST">
+            {{ form_start(form) }}
+            <div class="form-group">
+                <label for="username">Titre :</label>
+                {{ form_widget(form.title, {'attr' : {'value' : one_announce.title}}) }}
+            </div>
+            <div class="form-group">
+                <label for="username">Description :</label>
+                {{ form_widget(form.description, {'attr' : {'value' : one_announce.description}}) }}
+            </div>
+            <div class="form-group">
+                <label for="email">Autheur :</label>
+                {{ form_widget(form.author, {'attr' : {'value' : one_announce.author}}) }}
+            </div>
+            <button type="submit" class="btn-submit">Créer l'annonce</button>
+            {{ form_end(form) }}
+        </form>
+    </div>
 {% endblock %}

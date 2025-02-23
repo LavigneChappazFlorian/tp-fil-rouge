@@ -9,7 +9,8 @@
             {% for announce in announces %}
             <div class="annonce">
                 <h2>{{ announce.title }}</h2>
-                <p>{{ announce.description }}</p>
+                <p>Description : {{ announce.description }}</p>
+                <p>Autheur : {{ announce.author }}</p>
                 <a href="{{ path('announce_edit', {id: announce.id}) }}" class="btn">Voir l'annonce</a>
             </div>
             {% endfor %}
