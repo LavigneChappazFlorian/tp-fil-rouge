@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AnnounceController extends AbstractController
 {
-    #[Route('/announces', name: 'announce')]
+    #[Route('/', name: 'announce')]
     public function index(AnnounceRepository $announceRepository): Response
     {
         $announces = $announceRepository->findAll();

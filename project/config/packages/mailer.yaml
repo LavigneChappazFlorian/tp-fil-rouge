@@ -2,3 +2,7 @@ framework:
     mailer:
         dsn: '%env(MAILER_DSN)%'
         message_bus: false
+        envelope:
+            sender: 'admin@dealgames.com'
+        headers:
+            From: 'Florian <admin@dealgames.com>'

@@ -42,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
+    #[ORM\Column]
+    private ?bool $is_verifed = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,5 +159,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->setCreatedAt(new \DateTimeImmutable());
+    }
+
+    public function isVerifed(): ?bool
+    {
+        return $this->is_verifed;
+    }
+
+    public function setIsVerifed(bool $is_verifed): static
+    {
+        $this->is_verifed = $is_verifed;
+
+        return $this;
     }
 }
