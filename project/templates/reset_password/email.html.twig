@@ -1,0 +1,20 @@
+<div
+    style="max-width: 500px; margin: auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h1 style="color: #333;">Bonjour !</h1>
+
+    <p style="color: #555; font-size: 16px;">
+        Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant :
+    </p>
+
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}"
+        style="display: inline-block; background-color: #007bff; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 5px; font-size: 16px; margin-top: 10px;">
+        Réinitialiser votre mot de passe
+    </a>
+
+    <p style="color: #777; font-size: 14px; margin-top: 20px;">
+        Ce lien expirera dans <strong>{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData,
+            'ResetPasswordBundle') }}</strong>.
+    </p>
+
+    <p style="color: #666; font-size: 14px;">A bientôt sur DealGames !</p>
+</div>

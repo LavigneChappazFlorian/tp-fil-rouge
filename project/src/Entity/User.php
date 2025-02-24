@@ -156,11 +156,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->setCreatedAt(new \DateTimeImmutable());
-    }
-
     public function isVerifed(): ?bool
     {
         return $this->is_verifed;
@@ -171,5 +166,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->is_verifed = $is_verifed;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTimeImmutable());
+        $this->setIsVerifed(true);
     }
 }
